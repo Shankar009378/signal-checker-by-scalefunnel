@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signal Checker</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand-header">
+        <img src="../assets/icon40.png" alt="Scale Funnel" class="brand-logo" />
+        <h1 class="brand-title">
+          <span class="signal-text">Signal</span>
+          <span class="checker-text">Checker</span>
+        </h1>
+        <span class="brand-subtitle">by Scale Funnel</span>
+      </div>
+    </header>
+
+    <!-- Loading State -->
+    <div id="loadingState" class="state-card">
+      <div class="spinner"></div>
+      <p>Analyzing profile...</p>
+    </div>
+
+    <!-- Error State: Not on LinkedIn -->
+    <div id="notLinkedInState" class="state-card hidden">
+      <div class="state-icon">⚠️</div>
+      <p class="state-title">Not a LinkedIn Profile</p>
+      <p class="state-desc">Open a LinkedIn profile to run Signal Checker.</p>
+    </div>
+
+    <!-- Error State: Extraction Failed -->
+    <div id="extractionErrorState" class="state-card hidden">
+      <div class="state-icon">❌</div>
+      <p class="state-title">Unable to Analyze</p>
+      <p class="state-desc">Unable to analyze this profile. Try refreshing the page.</p>
+    </div>
+
+    <!-- Results -->
+    <div id="resultsState" class="hidden">
+      <!-- Score Card -->
+      <section class="section score-section">
+        <div class="score-circle">
+          <svg viewBox="0 0 120 120" class="score-svg">
+            <circle cx="60" cy="60" r="54" class="score-ring-bg" />
+            <circle cx="60" cy="60" r="54" class="score-ring" id="scoreRing" />
+          </svg>
+          <div class="score-text">
+            <span class="score-number" id="scoreNumber">--</span>
+            <span class="score-label">/ 100</span>
+          </div>
+        </div>
+        <div class="score-breakdown" id="scoreBreakdown"></div>
+      </section>
+
+      <!-- Strengths -->
+      <section class="section">
+        <h2 class="section-title">
+          <span class="section-icon">✓</span>
+          Strengths
+        </h2>
+        <ul class="insight-list strengths" id="strengthsList"></ul>
+      </section>
+
+      <!-- Weaknesses -->
+      <section class="section">
+        <h2 class="section-title">
+          <span class="section-icon">✗</span>
+          Weaknesses
+        </h2>
+        <ul class="insight-list weaknesses" id="weaknessesList"></ul>
+      </section>
+
+      <!-- Recommendations -->
+      <section class="section">
+        <h2 class="section-title">
+          <span class="section-icon">→</span>
+          Recommendations
+        </h2>
+        <ul class="insight-list recommendations" id="recommendationsList"></ul>
+      </section>
+
+      <!-- Export Buttons -->
+      <div id="exportSection" class="export-section hidden">
+        <button id="downloadReport" class="export-btn download-btn">
+          ⬇ Download Report
+        </button>
+        <button id="shareReport" class="export-btn share-btn">
+          ↗ Share Score
+        </button>
+      </div>
+
+      <!-- CTA -->
+      <div id="ctaSection" class="cta-card hidden">
+        <p class="cta-text">Your score is below 80. Recruiters are likely skipping your profile right now.</p>
+        <p class="cta-subtext">I fix this in one 60-min session — ₹999.</p>
+        <a href="https://scalefunnel.in?utm_source=extension&utm_medium=cta&utm_campaign=signal_checker" target="_blank"
+          rel="noopener noreferrer" class="cta-button">Fix My Profile — ₹999 →</a>
+        <p class="cta-free">or DM @shankar.scalefunnel for free gap report</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Signal Checker v1.0 &mdash; All analysis runs locally.</p>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>

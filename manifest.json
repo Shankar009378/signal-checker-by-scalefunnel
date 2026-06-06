@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Signal Checker by Scale Funnel",
+  "version": "1.0.0",
+  "description": "Audit LinkedIn profiles and generate a Signal Score out of 100 to help students improve their profiles.",
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Signal Checker by Scale Funnel"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.linkedin.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.linkedin.com/*"],
+      "js": ["content/content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
