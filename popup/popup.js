@@ -20,7 +20,9 @@
   const INTENT_KEYWORDS = [
     'open to work', 'seeking opportunities', 'looking for internship',
     'looking for opportunities', 'aspiring', 'open to internship',
-    'available', 'hiring', 'open to roles', 'fresher', 'entry level'
+    'available', 'hiring', 'open to roles', 'fresher', 'entry level',
+    'open to new opportunities', 'actively looking', 'exploring opportunities',
+    'seeking internship', 'looking for roles'
   ];
 
   /**
@@ -29,6 +31,8 @@
    */
   function calculateHeadlineScore(headline) {
     if (!headline || typeof headline !== 'string') return 0;
+    // Shape validation — wrong node returns very short or very long text
+    if (headline.length < 5 || headline.length > 300) return 0;
 
     const lower = headline.toLowerCase();
     let score = 0;
@@ -58,6 +62,8 @@
   // ─── About Score ──────────────────────────────
   function calculateAboutScore(aboutText) {
     if (!aboutText || typeof aboutText !== 'string') return 0;
+    // Shape validation — about section should be reasonable length
+    if (aboutText.length < 20 || aboutText.length > 5000) return 0;
     const wordCount = aboutText.trim().split(/\s+/).length;
     if (wordCount >= 100) return 15;
     return Math.round((wordCount / 100) * 15);
@@ -416,10 +422,10 @@ ${recommendations.recommendations.length > 0
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Want to fix these gaps fast?
 
-Book a 60-min Profile Fix Session — ₹999
+Book a 45-min Profile Fix Session — ₹299
 scalefunnel.in
 
-Free gap report: DM @shankar.scalefunnel
+Free gap report: DM @shankar.scalefunnel on Instagram
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Signal Checker by Scale Funnel
 `.trim();
@@ -436,7 +442,7 @@ Signal Checker by Scale Funnel
   }
 
   function shareReport(reportText, score) {
-    const shareText = `My LinkedIn Signal Score: ${score}/100 🎯\n\nChecked with Signal Checker by Scale Funnel\n\nFree tool: scalefunnel.in/signal-checker\n\n#LinkedInTips #Placement #Internship #ScaleFunnel`;
+    const shareText = `My LinkedIn Signal Score: ${score}/100 🎯\n\nChecked with Signal Checker by Scale Funnel\n\nFree tool: scalefunnel.in\n\n#LinkedInTips #Placement #Internship #ScaleFunnel`;
 
     if (navigator.share) {
       navigator.share({
